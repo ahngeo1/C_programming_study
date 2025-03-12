@@ -1,13 +1,13 @@
 #include <stdio.h>
 
 int main(void) {
-	int y, z, k;
+	int x, z, k;
 	printf("*   Tree   *\n");
-	for (y = 1; y < 7; y++)
+	for (x = 1; x < 7; y++)
 	{
-		for (z = 5; y-1 < z; z--)
+		for (z = 5; x-1 < z; z--)
 			printf(" ");
-		for(k=1;k<y+1;k++)
+		for(k = 1; k <x+1; k++)
 			printf("* ");
 		printf("\n");
 	}
