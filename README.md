@@ -1,7 +1,5 @@
-# C_programming_study
-C언어 공부 기록용
+# C programming study
+이 저장소는 C 프로그래밍 학습을 위한 공간입니다.
 
-## tree_pattern.c
-이 코드는 이중 반복문을 통해 트리를 출력하는 프로그램입니다.
-
-[트리 출력 코드 바로가기](https://github.com/ahngeo1/C_programming_study/blob/main/tree_pattern.c)
+## 코드 목록
+- [트리 출력 코드](https://github.com/ahngeo1/C_programming_study/blob/main/tree_pattern.c)
