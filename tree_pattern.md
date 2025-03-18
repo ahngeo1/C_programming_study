@@ -13,7 +13,7 @@
    - 입력된 높이에 맞는 트리 출력.
   
 ## 코드
-'''c
+```c
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 
@@ -60,4 +60,4 @@ int main(void) {
 	
 	return 0; // 프로그램 종료
 }
-'''
+```
