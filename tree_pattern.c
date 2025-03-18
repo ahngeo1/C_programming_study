@@ -4,7 +4,7 @@
 int main(void) {
 	int y, z, k;
 	int height;
-	printf("Æ®¸®ÀÇ ³ôÀÌ¸¦ ÀÔ·ÂÇÏ½Ã¿À : ");
+	printf("íŠ¸ë¦¬ì˜ ë†’ì´ë¥¼ ì…ë ¥í•˜ì‹œì˜¤ : ");
 	scanf("%d", &height);
 	printf("*");
 	for (y = 1; y < height - 2; y++)
