@@ -2,7 +2,9 @@
 
 ## 코드 개요
 이 코드는 사용자 입력을 받아 원하는 높이의 트리를 출력하는 프로그램입니다.
+
 **반복문**을 사용해 코드의 간결성과 확장성을 고려하였습니다.
+[트리 출력 코드](https://github.com/ahngeo1/C_programming_study/blob/main/%ED%8A%B8%EB%A6%AC%20%EC%9E%85%EB%A0%A5%20%EB%B0%9B%EC%95%84%EC%84%9C%20%EC%B6%9C%EB%A0%A5%20%EC%BD%94%EB%93%9C.c)
 
 ## 코드 동작 방식
 1. **입력**
