@@ -1,6 +1,6 @@
 # 트리 출력 코드 (tree_pattern.c)
 
-[GitHub 소스 코드 보기](https://github.com/ahngeo1/C_programming_study/blob/main/%ED%8A%B8%EB%A6%AC%20%EC%9E%85%EB%A0%A5%20%EB%B0%9B%EC%95%84%EC%84%9C%20%EC%B6%9C%EB%A0%A5%20%EC%BD%94%EB%93%9C.c)
+[GitHub 소스 코드 보기](https://github.com/ahngeo1/C_programming_study/blob/main/tree_pattern.c)
 
 ## 코드 개요
 이 코드는 사용자 입력을 받아 원하는 높이의 트리를 출력하는 프로그램입니다.
