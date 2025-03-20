@@ -1,6 +1,6 @@
 # 계산기 코드 (basic_calc.c)
 
-[GitHub 소스 코드 보기](https://github.com/ahngeo1/C_programming_study/blob/main/%EA%B3%84%EC%82%B0%EA%B8%B0%EC%BD%94%EB%93%9C%20%EC%97%85%EA%B8%80%EB%B2%84%EC%A0%84.c)
+[GitHub 소스 코드 보기](https://github.com/ahngeo1/C_programming_study/blob/main/basic_calc.c)
 
 ## 코드 개요
 이 코드는 사용자 입력을 받아 해당하는 연산자를 지정하고, 두 수를 입력받아 연산하여 결과를 출력하는 프로그램 입니다.
@@ -25,12 +25,12 @@ int main()
 	printf("사칙연산 프로그램\n");
 	printf("============================\n\n");
 
-	printf("1. + 덧셈\n");
-	printf("2. - 뺄셈\n");
-	printf("3. + 곱셈\n");
-	printf("4. + 나눗셈\n");
-	printf("5. 제곱\n");
-	printf("6. 거듭제곱\n");
+	printf("1. +  덧셈\n");
+	printf("2. -  뺄셈\n");
+	printf("3. ×  곱셈\n");
+	printf("4. ÷  나눗셈\n");
+	printf("5. a² 제곱\n");
+	printf("6. aⁿ 거듭제곱\n");
 	printf("0. 종료\n");
 
 	printf("번호 선택 : ");
@@ -53,7 +53,7 @@ int main()
 		{
 			printf("곱셈을 합니다. 두 정수를 입력하시오 : ");
 			scanf("%d %d", &a, &b);
-			printf("%d x %d = %d\n", a, b, a * b);
+			printf("%d × %d = %d\n", a, b, a * b);
 		}
 		else if (sel == 4)
 		{
@@ -61,7 +61,7 @@ int main()
 			scanf("%d %d", &a, &b);
 			if (b != 0)
 			{
-				printf("%d / %d = %.5f\n", a, b, (float)a / b);
+				printf("%d ÷ %d = %.5f\n", a, b, (float)a / b);
 			}
 			else
 			{
@@ -73,7 +73,7 @@ int main()
 		{
 			printf("제곱을 합니다. 정수를 입력하시오 : ");
 			scanf("%d", &a);
-			printf("%d x %d = %d\n", a, a, a * a);
+			printf("%d² = %d\n", a, a * a);
 		}
 		else if (sel == 6)
 		{
@@ -82,7 +82,7 @@ int main()
 			ans = 1;
 			if (b >= 0)
 			{
-				for (i = 1; i < b + 1; i++)
+				for (i = 1; i <= b; i++)
 				{
 					ans = ans * a;
 				}
@@ -90,7 +90,7 @@ int main()
 			}
 			else
 			{
-				for (i = 1; i < -b + 1; i++)
+				for (i = 1; i <= -b; i++)
 				{
 					ans = ans * a;
 				}
@@ -112,3 +112,6 @@ int main()
 ```
 
 ## 확장 가능성
+- while문을 do-while로 바꿔서 가독성 개선
+- 함수 분리
+- switch-case 문 사용
