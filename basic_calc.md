@@ -45,7 +45,7 @@ int main()
 	// 연산자 선택
 	printf("번호 선택 : ");
 	scanf("%d", &sel);
-	// 0 입력 전까지 반복 실행행
+	// 0 입력 전까지 반복 실행
 	while (sel != 0)
 	{
 		if (sel == 1)
@@ -72,7 +72,7 @@ int main()
 			scanf("%d %d", &a, &b);
 			if (b != 0)
 			{
-				printf("%d ÷ %d = %.5f\n", a, b, (float)a / b); // 실수형 출력력
+				printf("%d ÷ %d = %.5f\n", a, b, (float)a / b); // 실수형 출력
 			}
 			else // 예외 처리
 			{
@@ -91,7 +91,7 @@ int main()
 			printf("거듭제곱을 합니다. 두 정수를 입력하시오 : ");
 			scanf("%d %d", &a, &b);
 			ans = 1;
-			// 지수 부호 고려
+			// 음수 지수 입력 시 역수 처리리
 			if (b >= 0)
 			{
 				for (i = 1; i <= b; i++)
@@ -110,7 +110,7 @@ int main()
 			}
 
 		}
-		else // 잘못된 입력 고려
+		else // 잘못된 입력 처리
 		{
 			printf("잘못된 번호입니다. 번호를 다시 입력해주세요.\n");
 		}
