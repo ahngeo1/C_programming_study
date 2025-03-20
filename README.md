@@ -3,4 +3,4 @@
 
 ## 코드 목록
 - [트리 출력 코드](https://github.com/ahngeo1/C_programming_study/blob/main/tree_pattern.md)
-- [계산기 코드](https://github.com/ahngeo1/C_programming_study/blob/main/%EA%B3%84%EC%82%B0%EA%B8%B0%EC%BD%94%EB%93%9C.md)
+- [사칙연산 계산기 프로그](https://github.com/ahngeo1/C_programming_study/blob/main/basic_calc.md)
