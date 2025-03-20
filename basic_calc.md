@@ -126,5 +126,5 @@ int main()
 
 ## 확장 가능성
 - while문을 do-while로 바꿔서 가독성 개선
-- 함수 분리
+- 연산 함수 분리
 - switch-case 문 사용
