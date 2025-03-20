@@ -10,12 +10,12 @@ int main()
 	printf("사칙연산 프로그램\n");
 	printf("============================\n\n");
 
-	printf("1. + 덧셈\n");
-	printf("2. - 뺄셈\n");
-	printf("3. + 곱셈\n");
-	printf("4. + 나눗셈\n");
-	printf("5. 제곱\n");
-	printf("6. 거듭제곱\n");
+	printf("1. +  덧셈\n");
+	printf("2. -  뺄셈\n");
+	printf("3. ×  곱셈\n");
+	printf("4. ÷  나눗셈\n");
+	printf("5. a² 제곱\n");
+	printf("6. aⁿ 거듭제곱\n");
 	printf("0. 종료\n");
 
 	printf("번호 선택 : ");
@@ -38,7 +38,7 @@ int main()
 		{
 			printf("곱셈을 합니다. 두 정수를 입력하시오 : ");
 			scanf("%d %d", &a, &b);
-			printf("%d x %d = %d\n", a, b, a * b);
+			printf("%d × %d = %d\n", a, b, a * b);
 		}
 		else if (sel == 4)
 		{
@@ -46,7 +46,7 @@ int main()
 			scanf("%d %d", &a, &b);
 			if (b != 0)
 			{
-				printf("%d / %d = %.5f\n", a, b, (float)a / b);
+				printf("%d ÷ %d = %.5f\n", a, b, (float)a / b);
 			}
 			else
 			{
@@ -58,7 +58,7 @@ int main()
 		{
 			printf("제곱을 합니다. 정수를 입력하시오 : ");
 			scanf("%d", &a);
-			printf("%d x %d = %d\n", a, a, a * a);
+			printf("%d² = %d\n", a, a * a);
 		}
 		else if (sel == 6)
 		{
@@ -67,7 +67,7 @@ int main()
 			ans = 1;
 			if (b >= 0)
 			{
-				for (i = 1; i < b + 1; i++)
+				for (i = 1; i <= b; i++)
 				{
 					ans = ans * a;
 				}
@@ -75,7 +75,7 @@ int main()
 			}
 			else
 			{
-				for (i = 1; i < -b + 1; i++)
+				for (i = 1; i <= -b; i++)
 				{
 					ans = ans * a;
 				}
