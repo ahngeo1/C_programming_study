@@ -1,15 +1,16 @@
-# 계산기 코드 (basic_calc.c)
+# 사칙연산 계산기 프로그램 (basic_calc.c)
 
 [GitHub 소스 코드 보기](https://github.com/ahngeo1/C_programming_study/blob/main/basic_calc.c)
 
 ## 코드 개요
-이 코드는 사용자 입력을 받아 해당하는 연산자를 지정하고, 두 수를 입력받아 연산하여 결과를 출력하는 프로그램 입니다.
+C 언어로 작성한 간단한 사칙연산 계산기 프로그램입니다.
+사용자가 선택한 연산에 따라 덧셈, 뺄셈, 곱셈, 나눗셈, 제곱, 거듭제곱 연산을 수행할 수 있습니다.
 
-## 코드 동작 방식
-- 사용자로부터 연산자를 지정받음.
-- if/else 문을 이용해 연산자별 코드 실행
-- 입력된 숫자에 맞는 결과 출력.
-- while 을 이용해 위 과정 반복.
+## 코드 설명
+- 메뉴 출력 → 사용자 입력 받기 → 해당 연산 수행 구조로 구성
+- while문을 사용하여 0번 입력 전까지 반복 실행
+- 거듭제곱 연산에서는 양수, 음수 지수 모두 처리 가능
+- 나눗셈 연산 시, 0으로 나누는 경우 예외 처리 포함
 
 ## 코드
 ```c
@@ -19,12 +20,16 @@
 
 int main()
 {
-	int sel, a, b, i;
-	int ans;
+	int sel, a, b, i; // 연산자, 숫자, 반복문 변수
+	int ans; // 거듭제곱을 위한 변수
+
+	// 제목 출력
 	printf("============================\n");
 	printf("사칙연산 프로그램\n");
 	printf("============================\n\n");
 
+
+	// 연산자 보기 출력
 	printf("1. +  덧셈\n");
 	printf("2. -  뺄셈\n");
 	printf("3. ×  곱셈\n");
@@ -33,9 +38,10 @@ int main()
 	printf("6. aⁿ 거듭제곱\n");
 	printf("0. 종료\n");
 
+	// 연산자 선택
 	printf("번호 선택 : ");
 	scanf("%d", &sel);
-	while (sel != 0)
+	while (sel != 0) // 0을 입력받기 전까지 프로그램 반복
 	{
 		if (sel == 1)
 		{
@@ -47,64 +53,7 @@ int main()
 		{
 			printf("뺄셈을 합니다. 두 정수를 입력하시오 : ");
 			scanf("%d %d", &a, &b);
-			printf("%d - %d = %d\n", a, b, a - b);
-		}
-		else if (sel == 3)
-		{
-			printf("곱셈을 합니다. 두 정수를 입력하시오 : ");
-			scanf("%d %d", &a, &b);
-			printf("%d × %d = %d\n", a, b, a * b);
-		}
-		else if (sel == 4)
-		{
-			printf("나눗셈을 합니다. 두 정수를 입력하시오 : ");
-			scanf("%d %d", &a, &b);
-			if (b != 0)
-			{
-				printf("%d ÷ %d = %.5f\n", a, b, (float)a / b);
-			}
-			else
-			{
-				printf("0으로 나눌 수 없습니다.\n");
-			}
-			
-		}
-		else if (sel == 5)
-		{
-			printf("제곱을 합니다. 정수를 입력하시오 : ");
-			scanf("%d", &a);
-			printf("%d² = %d\n", a, a * a);
-		}
-		else if (sel == 6)
-		{
-			printf("거듭제곱을 합니다. 두 정수를 입력하시오 : ");
-			scanf("%d %d", &a, &b);
-			ans = 1;
-			if (b >= 0)
-			{
-				for (i = 1; i <= b; i++)
-				{
-					ans = ans * a;
-				}
-				printf("%d ^ %d = %d\n", a, b, ans);
-			}
-			else
-			{
-				for (i = 1; i <= -b; i++)
-				{
-					ans = ans * a;
-				}
-				printf("%d ^ %d = %.5f\n", a, b, (float)1/ans);
-			}
-
-		}
-		else
-		{
-			printf("잘못된 번호입니다. 번호를 다시 입력해주세요.\n");
-		}
-		printf("번호 선택 : ");
-		scanf("%d", &sel);
-	}
+			printf("%d - %d = %d\n", a료
 	printf("프로그램을 종료합니다.\n");
 	printf("============================\n");
 	return 0;
