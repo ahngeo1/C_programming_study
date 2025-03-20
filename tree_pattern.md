@@ -24,7 +24,7 @@ int main(void) {
 	printf("트리의 높이를 입력하시오 : ");
 	scanf("%d", &height);
 
- 	//트리 제목 출력
+ 	// 트리 제목 출력
 	printf("*");
 	for (y = 1; y < height - 2; y++)
 		printf(" ");
