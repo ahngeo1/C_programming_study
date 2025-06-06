@@ -1,0 +1,265 @@
+#pragma warning (disable:4996)
+#include <stdio.h>
+#include <Windows.h>
+#define MAX 100
+struct student{ // 구조체로 정의
+	char name[10];
+	int	wisdom;
+	int virtue;
+	int physicality;
+	int sum;
+	float avg;
+};
+typedef struct student STUDENT; // 코드 간편하게
+int count = 7; // 현재 학생 수
+int menu(STUDENT s[]);
+void calculate_score(STUDENT s[]);
+void list_score(STUDENT s[]);
+void add_score(STUDENT s[]);
+void modify_score(STUDENT s[]);
+void statistic_score(STUDENT s[]);
+int print_score(STUDENT s[]);
+void graphSum(STUDENT s[]);
+void graphAvg(STUDENT s[]);
+void graphSubjects(STUDENT s[]);
+// 함수들 선언
+
+int main() {
+	STUDENT students[MAX] = { {"빨강",70,10,15,0,0.0},
+							{"주황",20,80,70,0,0.0},
+							{"노랑",50,80,95,0,0.0},
+							{"초록",100,100,100,0,0.0},
+							{"파랑",90,100,95,0,0.0},
+							{"진청",20,50,35,0,0.0},
+							{"보라",60,40,35,0,0.0} };
+	// 7명의 정보를 미리 입력
+	menu(students);
+}
+
+int menu(STUDENT s[]) {
+
+	char choice; // 선택 변수
+
+	// 메뉴출력, 메뉴에 따른 함수호출, 반복
+	while (1) {
+		while (getchar() != '\n'); // 버퍼 비워주고 시작!
+		printf("=== 학생 성적 관리 프로그램===\n\n");
+		printf("1. 학생 성적 모두 계산\n");
+		printf("2. 전체 학생 리스트 보기\n");
+		printf("3. 학생 정보 추가하기\n");
+		printf("4. 학생 정보 수정하기\n");
+		printf("5. 학생 성적 통계보기\n");
+		printf("6. 학생 성적 그래프로 보기\n");
+		printf("7. 종료하기\n");
+		printf("-------------------------------\n");
+		printf("선택: _\b");
+
+
+		choice = getchar();
+		while (getchar() != '\n'); // 버퍼 비우기
+
+		switch (choice) {
+		case '1': calculate_score(s); break;
+		case '2': list_score(s); break;
+		case '3': add_score(s); break;
+		case '4': modify_score(s); break;
+		case '5': statistic_score(s); break;
+		case '6': print_score(s); break;
+		case '7': printf("프로그램을 종료합니다."); return 0; // 프로그램 종료
+		default: printf("잘못된 입력입니다.\n"); break;
+		}
+	}
+	return 1;
+}
+
+void calculate_score(STUDENT s[]) {
+	for (int i = 0; i < count; i++) { // 인덱스는 0부터 시작
+		s[i].sum = s[i].wisdom + s[i].virtue + s[i].physicality;
+		s[i].avg = s[i].sum / 3.0;
+	}
+	printf("\n 모든 학생 성적 총점, 평균 계산 완료!\n");
+	printf("\n엔터키를 누르면 메뉴로 돌아갑니다.\n");
+	getchar();
+}
+
+void list_score(STUDENT s[]) {
+	printf("\n=== 전체 학생 리스트 보기===\n");
+	printf("|-------------------------------------------------------|\n");
+	printf("| 번호      이름      지    덕    체      총점     평균 |\n");
+	printf("|-------------------------------------------------------|\n");
+	for (int i = 0; i < count; i++) {
+		printf("| %4d %9s   %5d %5d %5d %8d    %6.1f |\n",
+			i + 1, s[i].name, s[i].wisdom, s[i].virtue, s[i].physicality, s[i].sum, s[i].avg);
+	}
+	printf("|-------------------------------------------------------|\n");
+
+	printf("\n엔터키를 누르면 메뉴로 돌아갑니다.\n");
+	getchar();
+
+}
+
+void add_score(STUDENT s[]) {
+	printf("=== 학생 정보 추가 하기 ===\n");
+
+	printf("이름 지 덕 체 순으로 정보를 입력하세요.\n");
+	scanf("%s %d %d %d", &s[count].name, &s[count].wisdom, &s[count].virtue, &s[count].physicality);
+	printf("학생 %s (%d, %d, %d) 가 추가되었습니다.\n", s[count].name, s[count].wisdom, s[count].virtue, s[count].physicality);
+	count++;
+
+	printf("\n엔터키를 누르면 메뉴로 돌아갑니다.\n");
+	while (getchar() != '\n'); // 버퍼 비우기 (입력이 있는 곳에서만 유의!!!!!)
+	getchar();
+}
+
+void modify_score(STUDENT s[]) {
+	int num;
+	printf("=== 학생 정보 수정 하기===\n");
+	printf("정보 수정할 학생의 번호를 입력 : ");
+	scanf("%d", &num);
+	printf("%d 학생의 정보는 현재 %s (%d, %d, %d) 입니다.\n\n", 
+		num, s[num - 1].name, s[num - 1].wisdom, s[num - 1].virtue, s[num - 1].physicality);
+	// 0부터 시작하니까 1빼주기
+
+	printf("이름 지 덕 체 순으로 정보를 입력하세요.\n");
+	scanf("%s %d %d %d", &s[num-1].name, &s[num-1].wisdom, &s[num-1].virtue, &s[num-1].physicality);
+	printf("학생 %s (%d, %d, %d) 가 수정되었습니다.\n", s[num-1].name, s[num-1].wisdom, s[num-1].virtue, s[num-1].physicality);
+
+	printf("\n엔터키를 누르면 메뉴로 돌아갑니다.\n");
+	while (getchar() != '\n'); // 버퍼 비우기
+	getchar();
+}
+void statistic_score(STUDENT s[]) {
+	int wt = 0, vt = 0, pt = 0; // 과목별 total
+	int max_wisdom = s[0].wisdom, min_wisdom = s[0].wisdom;
+	int max_virtue = s[0].virtue, min_virtue = s[0].virtue;
+	int max_physicality = s[0].physicality, min_physicality = s[0].physicality;
+	// 최댓값, 최솟값 저장할 변수
+
+	for (int i = 1; i < count; i++) {
+		if (s[i].wisdom > max_wisdom) max_wisdom = s[i].wisdom;
+		if (s[i].wisdom < min_wisdom) min_wisdom = s[i].wisdom;
+
+		if (s[i].virtue > max_virtue) max_virtue = s[i].virtue;
+		if (s[i].virtue < min_virtue) min_virtue = s[i].virtue;
+
+		if (s[i].physicality > max_physicality) max_physicality = s[i].physicality;
+		if (s[i].physicality < min_physicality) min_physicality = s[i].physicality;
+	}
+	for (int i = 0; i < count; i++) { 
+		wt = wt + s[i].wisdom;
+		vt = vt + s[i].virtue;
+		pt = pt + s[i].physicality;
+	}
+	printf("\n=== 성적 통계 보고서 ===\n\n");
+	printf("|-------------------------------------------------------|\n");
+	printf("| 번호      이름      지    덕    체      총점     평균 |\n");
+	printf("|-------------------------------------------------------|\n");
+	for (int i = 0; i < count; i++) {
+		printf("| %4d %9s   %5d %5d %5d %8d    %6.1f |\n",
+			i + 1, s[i].name, s[i].wisdom, s[i].virtue, s[i].physicality, s[i].sum, s[i].avg);
+	}
+	printf("|-------------------------------------------------------|\n");
+	printf("|   과목별 평균 |  %5.1f %5.1f %5.1f | 전체평균   %5.1f |\n", (float)wt/count, (float)vt/count, (float)pt/count, (wt + vt + pt) / (count*3.0));
+	printf("| 과목별 최고점 |  %5d %5d %5d                    |\n", max_wisdom, max_virtue, max_physicality);
+	printf("| 과목별 최저점 |  %5d %5d %5d                    |\n", min_wisdom, min_virtue, min_physicality);
+	printf("|-------------------------------------------------------|\n");
+
+	printf("\n엔터키를 누르면 메뉴로 돌아갑니다.\n");
+	getchar();
+}
+int print_score(STUDENT s[]) {
+	int choice;
+	printf("\n=== 성적 그래프 출력===\n\n");
+	printf("-------------------------\n");
+	printf("1. 총점 그래프 출력\n");
+	printf("2. 평균 그래프 출력\n");
+	printf("3. 과목별 그래프 출력\n");
+	printf("4. 그래프 출력 종료\n");
+	printf("_________________________\n");
+	printf("선택: _\b");
+
+	choice = getchar();
+	while (getchar() != '\n'); // 버퍼 비우기
+
+	switch (choice) {
+	case '1': graphSum(s); break;
+	case '2': graphAvg(s); break;
+	case '3': graphSubjects(s); break;
+	case '4': break;
+	}
+	
+	printf("\n엔터키를 누르면 메뉴로 돌아갑니다.\n");
+	while (getchar() != '\n'); // 버퍼 비우기
+	getchar();
+
+	return 1;
+}
+void graphSum(STUDENT s[]) {
+	printf("\n=== 총점 그래프 출력 ===\n\n");
+
+	for (int i = 0; i < count; i++) {
+		printf("--------");
+	}
+	printf("\n");
+	// 총 학생수에 따라 너비를 조정한다
+
+	for (int length = 300; length >= 0; length -= 20) { // 세로축의 단위를 지정
+		printf("%6d | ", length);
+		printf("   ");
+		for (int i = 0; i < count; i++) {
+			if (s[i].sum > length) printf("*     ");
+			else printf("      ");
+		}
+		printf(" |\n"); // 한줄이 끝나고 내려간다
+	}
+
+	for (int i = 0; i < count; i++) {
+		printf("--------");
+	}
+	printf("\n");
+
+	printf("  총점 | ");
+	for (int i = 0; i < count; i++) {
+		printf("%5s ", s[i].name);
+	}
+	printf("\n");
+	// 가로축 출력
+}
+
+void graphAvg(STUDENT s[]) {
+	printf("\n=== 평균 그래프 출력 ===\n\n");
+
+	for (int i = 0; i < count; i++) {
+		printf("--------");
+	}
+	printf("\n");
+	// 총 학생수에 따라 너비를 조정한다
+
+	for (int length = 100; length >= 0; length -= 5) { // 세로축의 단위를 지정
+		printf("%6d | ", length);
+		printf("   ");
+		for (int i = 0; i < count; i++) {
+			if (s[i].avg > length) printf("*     ");
+			else printf("      ");
+		}
+		printf(" |\n"); // 한줄이 끝나고 내려간다
+	}
+
+	for (int i = 0; i < count; i++) {
+		printf("--------");
+	}
+	printf("\n");
+
+	printf("  평균 | ");
+	for (int i = 0; i < count; i++) {
+		printf("%5s ", s[i].name);
+	}
+	printf("\n");
+	// 가로축 출력
+}
+
+void graphSubjects(STUDENT s[]) {
+	printf("\n=== 지 wisdom 과목 그래프 출력 ===\n\n");
+	printf("\n=== 덕 virtue 과목 그래프 출력 ===\n\n");
+	printf("\n=== 체 physicality 과목 그래프 출력 ===\n\n");
+}
