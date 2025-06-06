@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <Windows.h>
 #define MAX 100
-struct student{ // 구조체로 정의
+struct student { // 구조체로 정의
 	char name[10];
 	int	wisdom;
 	int virtue;
@@ -42,7 +42,6 @@ int menu(STUDENT s[]) {
 
 	// 메뉴출력, 메뉴에 따른 함수호출, 반복
 	while (1) {
-		while (getchar() != '\n'); // 버퍼 비워주고 시작!
 		printf("=== 학생 성적 관리 프로그램===\n\n");
 		printf("1. 학생 성적 모두 계산\n");
 		printf("2. 전체 학생 리스트 보기\n");
@@ -53,7 +52,6 @@ int menu(STUDENT s[]) {
 		printf("7. 종료하기\n");
 		printf("-------------------------------\n");
 		printf("선택: _\b");
-
 
 		choice = getchar();
 		while (getchar() != '\n'); // 버퍼 비우기
@@ -104,7 +102,7 @@ void add_score(STUDENT s[]) {
 	printf("이름 지 덕 체 순으로 정보를 입력하세요.\n");
 	scanf("%s %d %d %d", &s[count].name, &s[count].wisdom, &s[count].virtue, &s[count].physicality);
 	printf("학생 %s (%d, %d, %d) 가 추가되었습니다.\n", s[count].name, s[count].wisdom, s[count].virtue, s[count].physicality);
-	count++;
+	count++; // 학생 수 추가
 
 	printf("\n엔터키를 누르면 메뉴로 돌아갑니다.\n");
 	while (getchar() != '\n'); // 버퍼 비우기 (입력이 있는 곳에서만 유의!!!!!)
@@ -116,13 +114,13 @@ void modify_score(STUDENT s[]) {
 	printf("=== 학생 정보 수정 하기===\n");
 	printf("정보 수정할 학생의 번호를 입력 : ");
 	scanf("%d", &num);
-	printf("%d 학생의 정보는 현재 %s (%d, %d, %d) 입니다.\n\n", 
+	printf("%d 학생의 정보는 현재 %s (%d, %d, %d) 입니다.\n\n",
 		num, s[num - 1].name, s[num - 1].wisdom, s[num - 1].virtue, s[num - 1].physicality);
 	// 0부터 시작하니까 1빼주기
 
 	printf("이름 지 덕 체 순으로 정보를 입력하세요.\n");
-	scanf("%s %d %d %d", &s[num-1].name, &s[num-1].wisdom, &s[num-1].virtue, &s[num-1].physicality);
-	printf("학생 %s (%d, %d, %d) 가 수정되었습니다.\n", s[num-1].name, s[num-1].wisdom, s[num-1].virtue, s[num-1].physicality);
+	scanf("%s %d %d %d", &s[num - 1].name, &s[num - 1].wisdom, &s[num - 1].virtue, &s[num - 1].physicality);
+	printf("학생 %s (%d, %d, %d) 가 수정되었습니다.\n", s[num - 1].name, s[num - 1].wisdom, s[num - 1].virtue, s[num - 1].physicality);
 
 	printf("\n엔터키를 누르면 메뉴로 돌아갑니다.\n");
 	while (getchar() != '\n'); // 버퍼 비우기
@@ -145,7 +143,7 @@ void statistic_score(STUDENT s[]) {
 		if (s[i].physicality > max_physicality) max_physicality = s[i].physicality;
 		if (s[i].physicality < min_physicality) min_physicality = s[i].physicality;
 	}
-	for (int i = 0; i < count; i++) { 
+	for (int i = 0; i < count; i++) {
 		wt = wt + s[i].wisdom;
 		vt = vt + s[i].virtue;
 		pt = pt + s[i].physicality;
@@ -159,7 +157,7 @@ void statistic_score(STUDENT s[]) {
 			i + 1, s[i].name, s[i].wisdom, s[i].virtue, s[i].physicality, s[i].sum, s[i].avg);
 	}
 	printf("|-------------------------------------------------------|\n");
-	printf("|   과목별 평균 |  %5.1f %5.1f %5.1f | 전체평균   %5.1f |\n", (float)wt/count, (float)vt/count, (float)pt/count, (wt + vt + pt) / (count*3.0));
+	printf("|   과목별 평균 |  %5.1f %5.1f %5.1f | 전체평균   %5.1f |\n", (float)wt / count, (float)vt / count, (float)pt / count, (wt + vt + pt) / (count * 3.0));
 	printf("| 과목별 최고점 |  %5d %5d %5d                    |\n", max_wisdom, max_virtue, max_physicality);
 	printf("| 과목별 최저점 |  %5d %5d %5d                    |\n", min_wisdom, min_virtue, min_physicality);
 	printf("|-------------------------------------------------------|\n");
@@ -187,11 +185,6 @@ int print_score(STUDENT s[]) {
 	case '3': graphSubjects(s); break;
 	case '4': break;
 	}
-	
-	printf("\n엔터키를 누르면 메뉴로 돌아갑니다.\n");
-	while (getchar() != '\n'); // 버퍼 비우기
-	getchar();
-
 	return 1;
 }
 void graphSum(STUDENT s[]) {
@@ -224,6 +217,9 @@ void graphSum(STUDENT s[]) {
 	}
 	printf("\n");
 	// 가로축 출력
+
+	printf("\n엔터키를 누르면 메뉴로 돌아갑니다.\n");
+	getchar();
 }
 
 void graphAvg(STUDENT s[]) {
@@ -256,10 +252,99 @@ void graphAvg(STUDENT s[]) {
 	}
 	printf("\n");
 	// 가로축 출력
+
+	printf("\n엔터키를 누르면 메뉴로 돌아갑니다.\n");
+	getchar();
 }
 
 void graphSubjects(STUDENT s[]) {
 	printf("\n=== 지 wisdom 과목 그래프 출력 ===\n\n");
+	for (int i = 0; i < count; i++) {
+		printf("--------");
+	}
+	printf("\n");
+	// 총 학생수에 따라 너비를 조정한다
+
+	for (int length = 100; length >= 0; length -= 5) { // 세로축의 단위를 지정
+		printf("%6d | ", length);
+		printf("   ");
+		for (int i = 0; i < count; i++) {
+			if (s[i].wisdom > length) printf("*     ");
+			else printf("      ");
+		}
+		printf(" |\n"); // 한줄이 끝나고 내려간다
+	}
+
+	for (int i = 0; i < count; i++) {
+		printf("--------");
+	}
+	printf("\n");
+
+	printf("   지 | ");
+	for (int i = 0; i < count; i++) {
+		printf("%5s ", s[i].name);
+	}
+	printf("\n");
+	// 가로축 출력
+
 	printf("\n=== 덕 virtue 과목 그래프 출력 ===\n\n");
+	for (int i = 0; i < count; i++) {
+		printf("--------");
+	}
+	printf("\n");
+	// 총 학생수에 따라 너비를 조정한다
+
+	for (int length = 100; length >= 0; length -= 5) { // 세로축의 단위를 지정
+		printf("%6d | ", length);
+		printf("   ");
+		for (int i = 0; i < count; i++) {
+			if (s[i].virtue > length) printf("*     ");
+			else printf("      ");
+		}
+		printf(" |\n"); // 한줄이 끝나고 내려간다
+	}
+
+	for (int i = 0; i < count; i++) {
+		printf("--------");
+	}
+	printf("\n");
+
+	printf("   덕 | ");
+	for (int i = 0; i < count; i++) {
+		printf("%5s ", s[i].name);
+	}
+	printf("\n");
+	// 가로축 출력
+
 	printf("\n=== 체 physicality 과목 그래프 출력 ===\n\n");
+	for (int i = 0; i < count; i++) {
+		printf("--------");
+	}
+	printf("\n");
+	// 총 학생수에 따라 너비를 조정한다
+
+	for (int length = 100; length >= 0; length -= 5) { // 세로축의 단위를 지정
+		printf("%6d | ", length);
+		printf("   ");
+		for (int i = 0; i < count; i++) {
+			if (s[i].physicality > length) printf("*     ");
+			else printf("      ");
+		}
+		printf(" |\n"); // 한줄이 끝나고 내려간다
+	}
+
+	for (int i = 0; i < count; i++) {
+		printf("--------");
+	}
+	printf("\n");
+
+	printf("   체 | ");
+	for (int i = 0; i < count; i++) {
+		printf("%5s ", s[i].name);
+	}
+	printf("\n");
+	// 가로축 출력
+
+	printf("\n엔터키를 누르면 메뉴로 돌아갑니다.\n");
+	getchar();
 }
